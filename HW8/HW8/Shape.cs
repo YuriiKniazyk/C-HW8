@@ -1,10 +1,18 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace HW8
 {
+    [Serializable]
+    [DataContract]
+    [XmlInclude(typeof(Circle))]
+    [XmlInclude(typeof(Square))]
     public abstract class Shape : IComparable
     {
+        [DataMember]
+        [XmlAttribute]
         private readonly string _name;
 
         public string Name
@@ -18,6 +26,8 @@ namespace HW8
             _name = name;
         }
 
+        public Shape() { }
+        
         public abstract double Area();
         public abstract double Perimeter();
 

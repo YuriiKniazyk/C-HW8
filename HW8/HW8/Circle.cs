@@ -1,7 +1,15 @@
-﻿namespace HW8
+﻿using System;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
+
+namespace HW8
 {
+    [Serializable]
+    [DataContract]
     public class Circle : Shape
     {
+        [DataMember]
+        [XmlAttribute]
         public double Radius { get; set; }
         const double PI = 3.14;
 
@@ -10,6 +18,7 @@
             Radius = radius;
         }
 
+        public Circle() { }
         public override double Area()
         {
             return PI * Radius * Radius;
